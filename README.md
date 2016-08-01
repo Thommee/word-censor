@@ -19,5 +19,5 @@
         $letterSubstitutions    // optional
     );
     
-    $phrase = 'Some raw unceosored text';
+    $phrase = 'Some raw uncensored text';
     $result = $wordCensor->censor($phrase);
