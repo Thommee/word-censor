@@ -12,12 +12,14 @@
         'a' => array('@')
     );
 
-    $wordCensor = new $wordCensor(
+    $wordCensor = new WordCensor(
         $censoredWords,
         $replacement,
         $letterSeparatorChars,  // optional
         $letterSubstitutions    // optional
     );
     
-    $phrase = 'Some raw uncensored text';
+    $phrase = 'Some raw text';
     $result = $wordCensor->censor($phrase);
+    
+    // output: 'Some [censored] [censored]'
