@@ -55,10 +55,10 @@ class WordCensor
     }
 
     /**
-     * @param $censoredWord
+     * @param string $censoredWord
      * @param array $letterSeparatorChars
      * @param array $letterSubstitutions
-     * @return mixed
+     * @return string censored-word pattern
      */
     private static function createCensoredWordPattern($censoredWord, array $letterSeparatorChars, array $letterSubstitutions)
     {
@@ -72,11 +72,11 @@ class WordCensor
     }
 
     /**
-     * @param $letter
-     * @param $letterSubstitutions
-     * @return string
+     * @param string $letter
+     * @param array $letterSubstitutions
+     * @return string letter-pattern
      */
-    private static function createLetterPattern($letter, $letterSubstitutions) 
+    private static function createLetterPattern($letter, array $letterSubstitutions) 
     {
         $letterSubstitutionPattern = WordCensor::createLetterSubstitutionPattern($letter, $letterSubstitutions);
         
@@ -84,11 +84,11 @@ class WordCensor
     }
 
     /**
-     * @param $letter
-     * @param $letterSubstitutions
-     * @return mixed
+     * @param string $letter
+     * @param array $letterSubstitutions
+     * @return string letter-substitution-pattern
      */
-    function createLetterSubstitutionPattern($letter, $letterSubstitutions)
+    private function createLetterSubstitutionPattern($letter, array $letterSubstitutions)
     {
         // transform to letter substitution array
         $letterSubstitutionArray = array_key_exists($letter, $letterSubstitutions)
@@ -101,7 +101,7 @@ class WordCensor
     
     /**
      * @param array $letterSeparatorChars
-     * @return string
+     * @return string letter-separator-chars-pattern
      */
     private static function createLetterSeparatorCharsPattern(array $letterSeparatorChars)
     {
