@@ -36,7 +36,9 @@ class WordCensor
     {
         $pattern = $this->createCensoredWordsPattern($this->getCensoredWords(), $this->getLetterSeparatorChars(), $this->getLetterSubstitutions());
         
-        return preg_replace($pattern, $this->getReplacement(), $phrase);
+        return (null != $pattern)
+            ? preg_replace($pattern, $this->getReplacement(), $phrase)
+            : $phrase;
     }
 
     /**
@@ -51,7 +53,9 @@ class WordCensor
             $censoredWord = self::createCensoredWordPattern($censoredWord, $letterSeparatorChars, $letterSubstitutions);
         }
         
-        return '/(' . implode( '|', $censoredWords) . ')/i';
+        return count($censoredWords)
+            ? '/(' . implode( '|', $censoredWords) . ')/i'
+            : null;
     }
 
     /**

@@ -108,6 +108,19 @@ class WordCensorTest extends \PHPUnit_Framework_TestCase
                     'b' => array('8', '6'),
                     'B' => array('8')
                 )
+            ),
+            array(
+                // #8: empty censored words array
+                'censoredWords' => array(),
+                'specialChars' => array('.', '_', ' '),
+                'replacement' => '[censored]',
+                'rawText' => "this is raw text",
+                'expectedText' => "this is raw text",
+                'letterSubstitutions' => array(
+                    'a' => array('@', '2'),
+                    'b' => array('8', '6'),
+                    'B' => array('8')
+                )
             )
         );
     }
